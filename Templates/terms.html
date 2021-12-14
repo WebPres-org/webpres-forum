@@ -1,0 +1,25 @@
+{% extends 'basic.html' %}
+{% block body %}
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<br>
+<br>
+
+<!--Donate-->
+<div class="container">
+  <h2>Terms of Use.</h2>
+    <p>By using our products, you agree to our Terms of Service.</p>
+    <p>WebPres Forum is a set of related to WebPres product sites applications for questions and answers, owned and operated WebPres and BigwebX,(“WebPres”, “we” or “us”),welcomes you to the public, and invites you to participate in the community by sharing knowledge with your peers and colleagues. Like all communities, we ask that you participate in a manner that respects your fellow community members. To that end, we provide you with these terms of service to advise you of the legal obligations you assume when you engage with the WebPres Forums. These terms govern the use of the public Network (the “Public Network Terms”). .</p>
+    <p> To learn more about <a href="/privacy" class="text-reset">Privacy Policy.</a></p>
+
+
+
+ {% endblock %}

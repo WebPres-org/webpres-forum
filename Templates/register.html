@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+{% block body %}
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<br>
+<br>
+<div id="login-box">
+    <div class="items">
+      <h1>Register</h1>
+        <form action="/register/" method="post"> {% csrf_token %}
+   
+      <input type="text" name="username" placeholder="Username" />
+      <input type="email" name="email" placeholder="E-mail" />
+      <input type="text" name="first_name" placeholder="First Name" />
+      <input type="text" name="last_name" placeholder="Last Name" />
+      <input type="password" name="password" placeholder="Password" />
+      <input type="password" name="confirm_password" placeholder="Confirm your password" />
+      
+      <input type="submit" name="signup_submit" value="Register" />
+    </div>   
+  </div>
+
+  {% endblock %}
