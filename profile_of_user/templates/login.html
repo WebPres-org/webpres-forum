@@ -100,6 +100,7 @@ input[type="submit"]:active {
 }
 {% endblock %}
 
+{% block body %}
 <br>
 {% for message in messages  %}            
 <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -108,7 +109,6 @@ input[type="submit"]:active {
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-{% endfor %}   
 <div id="login-box">
     <div class="items">
       <h1>Log In</h1>
@@ -118,5 +118,5 @@ input[type="submit"]:active {
       <input type="submit" name="signup_submit" value="Log In" />
     </div>   
   </div>
-
-{% block body %} 
+{% endfor %}
+{% endblock %}
