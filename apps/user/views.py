@@ -1,98 +1,58 @@
-from django.shortcuts import render, redirect, HttpResponse, Http404
+from django.shortcuts import  render, redirect
+from .forms import NewUserForm
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.contrib.auth  import authenticate,  login, logout
-from .models import Post, Replie, Profile
-from .forms import ProfileForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+
+
+def register_request(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			messages.success(request, "Registration successful." )
+			return redirect("index")
+		messages.error(request, "Unsuccessful registration. Invalid information.")
+	form = NewUserForm()
+	return render (request=request, template_name="registration/register.html", context={"register_form":form})
+
+#Login fuctions request
+
+def login_request(request):
+	if request.method == "POST":
+		form = AuthenticationForm(request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect("index")
+			else:
+				messages.error(request,"Invalid username or password.")
+		else:
+			messages.error(request,"Invalid username or password.")
+	form = AuthenticationForm()
+	return render(request=request, template_name="registration/login.html", context={"login_form":form})
+
+#User Logout
+def logout_request(request):
+	logout(request)
+	messages.info(request, "You have successfully logged out.")
+	return redirect("index")
+
+def profile(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, "registration/profile.html")
+
+
+def password_reset(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, "profile/password_reset.html")
+
 
 def forum(request):
-    profile = Profile.objects.all()
-    if request.method=="POST":
-        user = request.user
-        image = request.user.profile.image
-        content = request.POST.get('content','')
-        post = Post(user1=user, post_content=content, image=image)
-        post.save()
-        alert = True
-        return render(request, "forums/forum.html", {'alert':alert})
-    posts = Post.objects.filter().order_by('-timestamp')
-    return render(request, "forums/forum.html", {'posts':posts})
-
-def discussion(request, myid):
-    post = Post.objects.filter(id=myid).first()
-    replies = Replie.objects.filter(post=post)
-    if request.method=="POST":
-        user = request.user
-        image = request.user.profile.image
-        desc = request.POST.get('desc','')
-        post_id =request.POST.get('post_id','')
-        reply = Replie(user = user, reply_content = desc, post=post, image=image)
-        reply.save()
-        alert = True
-        return render(request, "forums/discussion.html", {'alert':alert})
-    return render(request, "forums/discussion.html", {'post':post, 'replies':replies})
-
-def UserRegister(request):
-    if request.method=="POST":
-        username = request.POST['username']
-        email = request.POST['email']
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
-
-        if len(username) > 15:
-            messages.error(request, "Username must be under 15 characters.")
-            return redirect('forums//register')
-        if not username.isalnum():
-            messages.error(request, "Username must contain only letters and numbers.")
-            return redirect('forums//register')
-        if password != confirm_password:
-            messages.error(request, "Passwords do not match.")
-            return redirect('forums//register')
-
-        user = User.objects.create_user(username, email, password)
-        user.first_name = first_name
-        user.last_name = last_name
-        user.save()
-        return render(request, 'forums/login.html')
-    return render(request, "forums/register.html")
-
-def UserLogin(request):
-    if request.method=="POST":
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = authenticate(username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, "Successfully Logged In")
-            return redirect("/myprofile")
-        else:
-            messages.error(request, "Invalid Credentials")
-        alert = True
-        return render(request, 'registration/login.html', {'alert':alert})
-    return render(request, "registration/login.html")
-
-def UserLogout(request):
-    logout(request)
-    messages.success(request, "Successfully logged out")
-    return redirect('/login')
-
-@login_required(login_url = '/login')
-def myprofile(request):
-    if request.method=="POST":
-        user = request.user
-        profile = Profile(user=user)
-        profile.save()
-        form = ProfileForm(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            obj = form.instance
-            return render(request, "forums/profile.html",{'obj':obj})
-    else:
-        form=ProfileForm()
-    return render(request, "forums/profile.html", {'form':form})
-
+    # return HttpResponse('Hello from Python!')
+    return render(request, "forums/forum.html")
