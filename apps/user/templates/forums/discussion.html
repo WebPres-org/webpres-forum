@@ -1,4 +1,4 @@
-{% extends 'layouts/basic.html' %}
+{% extends "layouts/basic.html" %}
 
 {% block title %} Solutions {% endblock %}
 
@@ -53,11 +53,11 @@
 </div>
 {% endfor %}
 <!-- Modal -->
-<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Start Post</h5>
+          <h5 class="modal-title" id="ModalLabel">Start Post</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -66,7 +66,7 @@
         <div class="modal-body">
           <form action="/discussion/{{post.id}}/" method="POST"> {% csrf_token %}
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Post Your Solution Here</label>
+              <label for="FormControlTextarea1">Post Your Solution Here</label>
               <input type="hidden" name="post_id" value="{{post.id}}">
               <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
             </div>

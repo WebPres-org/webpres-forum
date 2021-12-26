@@ -6,10 +6,13 @@ Copyright (c) 2021 ronyman.com
 from django.urls import path
 from . import views
 
-name = 'apps.user'
-
 
 urlpatterns = [
-    #path("", views.apps.index, name="index"),
-    path("register", views.register_request, name="register")
+    path("", views.forum, name="forum"),
+    path("discussion/<int:myid>/", views.discussion, name="Discussions"),
+    path("register/", views.UserRegister, name="Register"),
+    path("login/", views.UserLogin, name="Login"),
+    path("logout/", views.UserLogout, name="Logout"),
+    path("myprofile/", views.myprofile, name="Myprofile"),
+
 ]

@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images",default="default/user.png")
+    image = models.ImageField(upload_to="Assets/uploads",default="")
 
 class Post(models.Model):
     user1 = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -22,11 +22,3 @@ class Replie(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
     timestamp= models.DateTimeField(default=now)
     image = models.ImageField(upload_to="images",default="")
-
-class UserPicture(models.Model):
-        user = models.OneToOneField(User, on_delete = models.CASCADE)
-        picture = models.ImageField(upload_to='...')
-# TextEditor
-class MyModel(models.Model):
-    ...
-    content = HTMLField()
