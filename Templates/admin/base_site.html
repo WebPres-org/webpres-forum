@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="Admin Login , Webpres Web Developer and Tax Services Agent in Australia.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% block extrahead %}
+         <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
+    {% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'Assets/brand/webpres-logo.png' %}" height="50px" />
+    </a>
+</h1>
+{% endblock %}
+{% block nav-global %}{% endblock %}
+
+
+{% block footer %}
+{% include "admin/footer.html" %}
+{% endblock %}
+

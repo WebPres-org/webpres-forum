@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>WebPres.org | Opensource CMS Site Builder </title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'Assets/brand/webpres-logo.png'%} " alt="" width="30" height="30" class="d-inline-block align-text-top">
+    </a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+      </li>
+        <li class="">
+        <a href="https://docs.webpres.org/"><span class=""></span> Docs</a>
+      </li>
+        <li class="">
+        <a href="http://webpres.org/"><span class=""></span> WebPres Site</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="navbar-right">
+        <a href="https://github.com/WebPres-org/v1.0"><span class="glyphicon glyphicon-download"></span>GitHub</a>
+      </li>
+      <li class="navbar-right">
+        <a href="https://www.facebook.com/ronymancom"><span class="glyphicon glyphicon-flash"></span> Facebook</a>
+      </li>
+       <li class="navbar-right">
+      {% if user.is_authenticated %}
+<ul class="navbar-nav mr-2">
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <ul>
+        <ul><a class="dropdown-item" href="/services">My Services</a></ul>
+        <ul><a class="dropdown-item" href="/myprofile">My Profile</a></ul>
+          <ul><a class="dropdown-item" href="/logout">Logout</a></ul>
+    </ul>
+        </div>
+      </li>
+{% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      {% endif %}
+
+  </li>
+
+    </ul>
+  </div>
+      </div>
+</nav>
+</div>
+    </nav>
+
+
+{% block content %}{% endblock %}
+</body>
+</html>

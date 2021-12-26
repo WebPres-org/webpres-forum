@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="WebPres , Contact.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="{% static 'Assets/uploads/ronyman-logo.png'%}" width="10%"">
+    </a>
+    <h1>Web Developer & Tax Service Agent</h1>
+
+    <ul><span class="glyphicon glyphicon-earphone"></span> +61 48 15 7777 6</ul>
+    <ul><span class="glyphicon glyphicon-envelope"></span> services@ronyman.com</ul>
+    <p>No time No worries... We work for you...!</p>
+
+  </div>
+
+{% include "legal/copyrights.html" %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+{# Load the tag library #}
+{% load bootstrap5 %}
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="ronyman , Register.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+<br>
+
+{% load crispy_forms_tags %}
+
+<!--Register-->
+<div class="container py-5">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+</div>
+
+{% include "copyrights.html" %}
+  {% endblock %}

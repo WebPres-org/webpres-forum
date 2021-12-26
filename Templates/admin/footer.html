@@ -1,0 +1,21 @@
+{% block footer %}
+<div id="footer" style="">
+    <hr/>
+    <div class="container pull-center">
+    <div class="container">
+        <p class="text-muted text-left">&copy;
+           {% now 'Y' %} <a class="" href="{% url 'admin:index' %}">ronyman.com</a></p>
+    </div>
+
+
+    <div class=" text text-right" role="alert">
+    <a href="/privacy" class="text-reset">Privacy Policy.</a>
+    <a href="/terms" class="text-reset">Terms of Used.</a>
+        <a href="/contact" class="text-reset">Contact Us.</a>
+  </div>
+
+
+
+</div>
+{% endblock %}
+

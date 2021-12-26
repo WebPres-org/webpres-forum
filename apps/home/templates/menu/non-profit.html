@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="Obtax ,Non Profit.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="{% static 'brand/LOGO_v1.png'%} " width="20%">
+    </a>
+    <h1>Non Profit Organization</h1>
+
+    <p> Statements and returns</p>
+    <p>Activity statements</p>
+    <p>Annual GST returns</p>
+    <p>How to lodge your tax return</p>
+    <p>Income tax returns</p>
+    <p>Ancillary fund returns</p>
+    <p>Franking credit refunds</p>
+    <p>Common Reporting Standard</p>
+    <p>National rental affordability scheme</p>
+
+
+
+
+
+  </div>
+<div class="container">
+
+
+  </div> <!-- row -->
+
+</div>
+
+{% include "legal/copyrights.html" %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layouts/base.html" %}
+{% include "header/script.html" %}
+{% load static %}
+{% load bootstrap5 %}
+% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="WebPres.org , Create A New Page.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create A New Page</title>
+</head>
+
+
+{{ blogentry.image }}
+<img src="{{ publication.image.url }}" />
+
+{% ifequal blogentry.image.image_orientation "landscape" %}
+    <img src="{{ blogentry.image.url }}" class="landscape" />
+{% endifequal %}
+<body>
+
+
+{% block title %}
+
+<textarea>
+    tinymce.init({
+  selector: 'textarea',  // change this value according to the HTML
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent'
+});
+    Welcome to TinyMCE!
+  </textarea>{% endblock %}
+
+{% block content %}
+    This is <em>an</em> Opensource WebPres  <strong>Free Site Builder</strong>.
+{% endblock %}
+{% include "footer/copyrights.html" %}
+{% include "powered-by/webpres.html" %}
+</body>
+</html>

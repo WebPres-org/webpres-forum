@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="WebPres , Web Developer and Tax Services Agent in Australia.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+<div class="jumbotron text-center">
+  <div class="container">
+    <a href="/" class="lang-logo">
+      <img src="{% static 'Assets/brand/webpres-logo.png'%} " width="10%">
+    </a>
+    <h1>Build with high-level Python web framework that make your site clean.</h1>
+
+    <ul><span class="glyphicon glyphicon-earphone"></span> +61 48 15 7777 6</ul>
+    <ul><span class="glyphicon glyphicon-envelope"></span> services@ronyman.com</ul>
+    <p>Free Management and Server Control at the backend...!</p>
+
+  </div>
+
+
+<div class="container">
+
+
+  </div> <!-- row -->
+
+</div>
+
+{% include "legal/copyrights.html" %}
+{% endblock %}

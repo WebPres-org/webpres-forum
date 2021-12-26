@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load bootstrap5 %}
+
+<br>
+<br>
+<br>
+<h3>Please login</h3>
+<div id="login-box">
+    <div class="items">
+      <h1>Log In</h1>
+              <form action="accounts/login/" method="post"> {% csrf_token %}
+      <input type="text" name="username" placeholder="Username" />
+      <input type="password" name="password" placeholder="Password" />
+      <input type="submit" name="signup_submit" value="Log In" />
+    </div>
+  </div>
+{% endblock %}

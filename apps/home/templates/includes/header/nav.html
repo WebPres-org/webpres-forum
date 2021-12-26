@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'Assets/brand/webpres-logo.png' %}" alt="" width="35" height="35" class="d-inline-block align-text-top">
+      WebPres
+    </a>
+
+    <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link" href="https://docs.webpres.org/en/latest/">Docs</a>
+  </li>
+      </li>
+      <li class="nav-item">
+    <a class="nav-link" href="http://forum.webpres.org">Forum</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'new' %}">Create A New Page</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Sign In</a>
+  </li>
+</ul>
+  </div>
+</nav>
