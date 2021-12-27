@@ -1,0 +1,41 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>WebPres.org | Opensource CMS Site Builder </title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
+</head>
+
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'Assets/brand/webpres-logo.png'%} " alt="" width="50" height="50" class="d-inline-block align-text-top">
+    </a>
+      <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link text-white active" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="https://docs.webpres.org/">Docs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" href="http://www.webpres.org/">WebPres Site</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white btn btn-outline-danger " href="/login">Login</a>
+  </li>
+</ul>
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+</body>
+{% block js %} {% endblock %}
+{% bootstrap_javascript %}
+
+</html>

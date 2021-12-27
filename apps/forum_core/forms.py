@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .models import Profile
 
 
-class NewUserForm(UserCreationForm):
+class UserRegister(UserCreationForm):
 	email = forms.EmailField(required=True)
 
 	class Meta:
@@ -18,3 +18,9 @@ class NewUserForm(UserCreationForm):
 		if commit:
 			user.save()
 		return user
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('image', )

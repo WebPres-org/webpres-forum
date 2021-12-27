@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, HttpResponse, Http404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate,  login, logout
-from .models import Post, Replie
-from .forms import Profile
+from .models import Post, Replie, Profile
+from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
+from .forms import UserRegister
 
 def forum(request):
     profile = Profile.objects.all()
@@ -44,19 +45,19 @@ def UserRegister(request):
 
         if len(username) > 15:
             messages.error(request, "Username must be under 15 characters.")
-            return redirect('register')
+            return redirect('forum')
         if not username.isalnum():
             messages.error(request, "Username must contain only letters and numbers.")
-            return redirect('register')
+            return redirect('forum')
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
-            return redirect('register')
+            return redirect('forum')
 
         user = User.objects.create_user(username, email, password)
         user.first_name = first_name
         user.last_name = last_name
         user.save()
-        return render(request, 'login')
+        return render(request, 'registration/login')
     return render(request, "registration/register.html")
 
 def UserLogin(request):
@@ -73,15 +74,14 @@ def UserLogin(request):
         else:
             messages.error(request, "Invalid Credentials")
         alert = True
-        return render(request, 'login', {'alert':alert})
-    return render(request, "registration/login.html")
+        return render(request, 'forums/login.html', {'alert':alert})
+    return render(request, "forums/login.html")
 
 def UserLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
-    return redirect('login')
-
-@login_required(login_url = 'registration/login.html')
+    return redirect('registration/login')
+@login_required(login_url = '/registration/login')
 
 def myprofile(request):
     if request.method=="POST":
@@ -95,8 +95,22 @@ def myprofile(request):
             return render(request, "profile/profile.html",{'obj':obj})
     else:
         form=ProfileForm()
-    return render(request, 'profile', {'form':form})
+    return render(request, 'profile/profile.html', {'form':form})
 
 def password_reset(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, "profile/password_reset.html")
+    return render(request, "registration/password_reset.html")
+
+
+
+def privacy(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, "legal/privacy.html")
+
+def terms(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, "legal/terms.html")
+
+def contact(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, "legal/contact.html")

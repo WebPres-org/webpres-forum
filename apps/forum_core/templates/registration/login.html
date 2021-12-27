@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="Login Accounts ,Forum WebPres.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% block content %}
+<br>
+<br>
+<div class="container">
+
+    {% block title %}Please Login{% endblock %}
+    <div class="row">
+        <div class="col align-self-center">
+            {% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+            <form role="form" method="post" >
+                {% csrf_token %}
+                <br>
+                {% bootstrap_form form %}
+                {% bootstrap_button "Login" button_type="submit" button_class="btn btn-outline-dark" %}
+            </form>
+    {# Assumes you set up the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Lost password?</a> or .
+            <a href='/register'>Register Account</a></p>
+        </div>
+    </div>
+</div>
+
+
+{% include "legal/copyrights.html" %}
+{% endblock %}
