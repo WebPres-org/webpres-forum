@@ -70,7 +70,7 @@ def UserLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Successfully Logged In")
-            return redirect("profile/login")
+            return redirect("registration/login")
         else:
             messages.error(request, "Invalid Credentials")
         alert = True

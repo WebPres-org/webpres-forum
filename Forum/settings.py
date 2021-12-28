@@ -27,8 +27,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 ###Add New
-LOGIN_REDIRECT_URL = "forums"
-LOGOUT_REDIRECT_URL = "forums"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 # Application definition
 
 INSTALLED_APPS = [
