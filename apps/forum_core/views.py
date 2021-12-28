@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect, HttpResponse, Http404
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -5,7 +6,6 @@ from django.contrib.auth  import authenticate,  login, logout
 from .models import Post, Replie, Profile
 from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegister
 
 def forum(request):
     profile = Profile.objects.all()
@@ -70,32 +70,19 @@ def UserLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Successfully Logged In")
-            return redirect("/myprofile")
+            return redirect("profile/login")
         else:
             messages.error(request, "Invalid Credentials")
         alert = True
-        return render(request, 'forums/login.html', {'alert':alert})
-    return render(request, "forums/login.html")
+        return render(request, 'accounts/login.html', {'alert':alert})
+    return render(request, "forums")
 
 def UserLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
-    return redirect('registration/login')
+    return redirect('forum')
 @login_required(login_url = '/registration/login')
 
-def myprofile(request):
-    if request.method=="POST":
-        user = request.user
-        profile = Profile(user=user)
-        profile.save()
-        form = ProfileForm(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            obj = form.instance
-            return render(request, "profile/profile.html",{'obj':obj})
-    else:
-        form=ProfileForm()
-    return render(request, 'profile/profile.html', {'form':form})
 
 def password_reset(request):
     # return HttpResponse('Hello from Python!')
@@ -114,3 +101,19 @@ def terms(request):
 def contact(request):
     # return HttpResponse('Hello from Python!')
     return render(request, "legal/contact.html")
+
+
+
+def myprofile(request):
+    if request.method=="POST":
+        user = request.user
+        profile = Profile(user=user)
+        profile.save()
+        form = ProfileForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            obj = form.instance
+            return render(request, "profile.html",{'obj':obj})
+    else:
+        form=ProfileForm()
+    return render(request, "profile.html", {'form':form})

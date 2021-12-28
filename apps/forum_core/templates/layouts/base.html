@@ -7,35 +7,70 @@
 <head>
 <title>WebPres.org | Opensource CMS Site Builder </title>
     <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
+    <!-- reference your installed Font Awesome Free package's files here -->
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+     <script src="{% static 'bootstrap_javascript_url' %}"></script>
+
+    <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
+      <link href="{% static 'fontawesome_free/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+      <link href="{% static 'fontawesome_free/css/brands.css' %}" rel="stylesheet" type="text/css">
+      <link href="{% static 'fontawesome_free/css/solid.css' %}" rel="stylesheet" type="text/css">
+
 </head>
 
-
+<!--start Body-->
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark"><!--main navbar-->
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img src="{% static 'Assets/brand/webpres-logo.png'%} " alt="" width="50" height="50" class="d-inline-block align-text-top">
     </a>
-      <ul class="nav justify-content-end">
+
+      <li class="nav navbar-nav me-auto">
+
+        <li class="nav-item">
+        <a class="nav-link text-white" href="/">Forums</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="https://docs.webpres.org/">Docs</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="http://www.webpres.org/">WebPres Site</a>
+      </li>
+
+        <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link text-white active" aria-current="page" href="/">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-white" href="https://docs.webpres.org/">Docs</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-white" href="http://www.webpres.org/">WebPres Site</a>
-  </li>
-  <li class="nav-item">
+        {% if user.is_authenticated %}
+     <li class="nav-item dropdown">
+            {% bootstrap_javascript %}
+    <a class="nav-link dropdown-toggle" href='#' id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Welcome {{request.user}}</a>
+    <div class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+    <ul>
+        <ul><a class="dropdown-item" href="/myprofile">My Profile</a></ul>
+          <ul><a class="dropdown-item" href="/logout">Logout</a></ul>
+    </ul>
+      </li>
+{% else %}
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/register/">Register</a>
+      </li>
+      <li class="nav-item">
+        <li class="nav-item">
     <a class="nav-link text-white btn btn-outline-danger " href="/login">Login</a>
   </li>
-</ul>
-  </div>
+      </li>
+      {% endif %}
+
+  </li>
+ </li>
+    </ul>
+      </div>
 </nav>
 
+
 {% block content %}{% endblock %}
-</body>
+
 {% block js %} {% endblock %}
 {% bootstrap_javascript %}
-
+</body>
 </html>

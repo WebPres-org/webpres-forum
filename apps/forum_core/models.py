@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
-from tinymce.models import HTMLField
 
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="Assets/uploads",default="")
+    image = models.ImageField(upload_to="images",default="default/user.png")
+
 
 class Post(models.Model):
     user1 = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -22,3 +22,8 @@ class Replie(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, default='')
     timestamp= models.DateTimeField(default=now)
     image = models.ImageField(upload_to="images",default="")
+
+
+
+
+

@@ -3,6 +3,7 @@ from pathlib import Path
 import os
 import django_heroku
 import sys
+sys.modules['fontawesome_free'] = __import__('fontawesome-free')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+###Add New
+LOGIN_REDIRECT_URL = "forum"
+LOGOUT_REDIRECT_URL = "forums"
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'tinymce',
     'crispy_forms',
+    'fontawesome_free',
 
 ]
 
@@ -149,6 +153,9 @@ BOOTSTRAP5 = {
 #TINYMCE
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
+
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 
 # Activate Django-Heroku.

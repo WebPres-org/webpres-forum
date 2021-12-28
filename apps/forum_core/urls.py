@@ -6,7 +6,8 @@ Copyright (c) 2021 ronyman.com
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
-import apps.forum_core
+import apps.forum_core.views
+
 
 urlpatterns = [
     path("", views.forum, name="forum"),
@@ -17,7 +18,7 @@ urlpatterns = [
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path("logout/", views.UserLogout, name="Logout"),
-    path("myprofile/", views.myprofile, name="Myprofile"),
+    path("myprofile/", apps.forum_core.views.myprofile, name="Myprofile"),
     path("privacy/", apps.forum_core.views.privacy, name="privacy"),
     path("terms/", apps.forum_core.views.terms, name="terms"),
     path("contact/", apps.forum_core.views.contact, name="contact"),
