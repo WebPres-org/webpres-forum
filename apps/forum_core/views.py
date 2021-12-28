@@ -45,19 +45,19 @@ def UserRegister(request):
 
         if len(username) > 15:
             messages.error(request, "Username must be under 15 characters.")
-            return redirect('forum')
+            return redirect('/register')
         if not username.isalnum():
             messages.error(request, "Username must contain only letters and numbers.")
-            return redirect('forum')
+            return redirect('/register')
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
-            return redirect('forum')
+            return redirect('/register')
 
         user = User.objects.create_user(username, email, password)
         user.first_name = first_name
         user.last_name = last_name
         user.save()
-        return render(request, 'registration/login')
+        return render(request, 'registration/login.html')
     return render(request, "registration/register.html")
 
 def UserLogin(request):

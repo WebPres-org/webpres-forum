@@ -12,8 +12,11 @@
 {% block content %}
 <br>
 <br>
-<div class="container">
-
+<div class="container my-4 bg pb-5">
+    <div class="row justify-content-center ">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
     {% block title %}Please Login{% endblock %}
     <div class="row">
         <div class="col align-self-center">
@@ -37,6 +40,11 @@
         </div>
     </div>
 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 {% include "legal/copyrights.html" %}

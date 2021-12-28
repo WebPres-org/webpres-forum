@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 ###Add New
-LOGIN_REDIRECT_URL = "forum"
+LOGIN_REDIRECT_URL = "forums"
 LOGOUT_REDIRECT_URL = "forums"
 # Application definition
 
@@ -155,7 +155,7 @@ BOOTSTRAP5 = {
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
 
 
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Activate Django-Heroku.

@@ -24,6 +24,7 @@ class Replie(models.Model):
     image = models.ImageField(upload_to="images",default="")
 
 
+####
 
 
 
