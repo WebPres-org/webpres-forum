@@ -2,7 +2,7 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-{% load crispy_forms_tags %}
+
 
 {% block head-meta %}
   	<meta charset="utf-8">
@@ -22,7 +22,7 @@
       </button>
     </div>
 {% endfor %}
-<div class="container my-4 bg pb-5">
+        <div class="container my-4 bg pb-5">
     <div class="row justify-content-center ">
         <div class="col-6">
             <div class="card">
@@ -30,6 +30,9 @@
                     <h3>Create Account</h3>
 
                     <form method="post" action='/register/'>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
                         <div class="form-group">
 
                             <label for="username"></label>
@@ -56,7 +59,6 @@
                             <input type="password" class="form-control" id="password" placeholder="Choose a password"
                                 name="password" required>
                         </div>
-						{% csrf_token %}
 
                         <div class="form-group">
                             <label for="confirm_password"></label>
@@ -68,8 +70,6 @@
 
                 </div>
                 </form>
-
-                {% bootstrap_label content %}
 <p class="fs-6">Noted:</p>
                 <p class="fs-6">"Username must be under 15 characters."</p>
                   <p class="fs-6">"Username must contain only letters and numbers."</p>

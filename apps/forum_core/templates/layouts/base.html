@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 {% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>WebPres.org | Opensource CMS Site Builder </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
     <!-- reference your installed Font Awesome Free package's files here -->
     <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
@@ -15,11 +17,17 @@
       <link href="{% static 'fontawesome_free/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
       <link href="{% static 'fontawesome_free/css/brands.css' %}" rel="stylesheet" type="text/css">
       <link href="{% static 'fontawesome_free/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <title>{% block title %}{% endblock %}</title>
 
-</head>
 
-<!--start Body-->
-<body>
+
+    {# --- css --- #}
+    {% block extra_css %}{% endblock %}
+
+  </head>
+
+{% block head %}
+
 <nav class="navbar navbar-dark bg-dark"><!--main navbar-->
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -42,7 +50,6 @@
   <li class="nav-item">
         {% if user.is_authenticated %}
      <li class="nav-item dropdown">
-            {% bootstrap_javascript %}
     <a class="nav-link dropdown-toggle" href='#' id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Welcome {{request.user}}</a>
     <div class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
     <ul>
@@ -66,11 +73,15 @@
     </ul>
       </div>
 </nav>
+{% endblock %}
 
+<!--start Body-->
+<body>
+<main class="container">
+      {% block content %}{% endblock %}
 
-{% block content %}{% endblock %}
-
-{% block js %} {% endblock %}
-{% bootstrap_javascript %}
+</main>
+    {# --- js --- #}
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

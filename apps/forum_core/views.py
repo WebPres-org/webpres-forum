@@ -46,13 +46,13 @@ def UserRegister(request):
 
         if len(username) > 15:
             messages.error(request, "Username must be under 15 characters.")
-            return redirect('/register')
+            return redirect('/register/')
         if not username.isalnum():
             messages.error(request, "Username must contain only letters and numbers.")
-            return redirect('/register')
+            return redirect('/register/')
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
-            return redirect('/register')
+            return redirect('/register/')
 
         user = User.objects.create_user(username, email, password)
         user.first_name = first_name
@@ -75,15 +75,32 @@ def UserLogin(request):
         else:
             messages.error(request, "Invalid Credentials")
         alert = True
-        return render(request, 'accounts/login.html', {'alert':alert})
-    return render(request, "forums")
+        return render(request, 'registration/login.html', {'alert':alert})
+    return render(request, "/")
 
 def UserLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
-    return redirect('forum')
-@login_required(login_url = '/registration/login')
+    return redirect('/')
 
+
+#######
+@login_required(login_url = 'registration/login')
+def myprofile(request):
+    if request.method=="POST":
+        user = request.user
+        profile = Profile(user=user)
+        profile.save()
+        form = ProfileForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            obj = form.instance
+            return render(request, "registration/profile.html",{'obj':obj})
+    else:
+        form=ProfileForm()
+    return render(request, "registration/profile.html", {'form':form})
+
+#####
 
 def password_reset(request):
     # return HttpResponse('Hello from Python!')
