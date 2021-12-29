@@ -84,23 +84,6 @@ def UserLogout(request):
     return redirect('/')
 
 
-#######
-@login_required(login_url = 'registration/login')
-def myprofile(request):
-    if request.method=="POST":
-        user = request.user
-        profile = Profile(user=user)
-        profile.save()
-        form = ProfileForm(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            form.save()
-            obj = form.instance
-            return render(request, "registration/profile.html",{'obj':obj})
-    else:
-        form=ProfileForm()
-    return render(request, "registration/profile.html", {'form':form})
-
-#####
 
 def password_reset(request):
     # return HttpResponse('Hello from Python!')
@@ -131,7 +114,7 @@ def myprofile(request):
         if form.is_valid():
             form.save()
             obj = form.instance
-            return render(request, "profile.html",{'obj':obj})
+            return render(request, "profile/profile.html",{'obj':obj})
     else:
         form=ProfileForm()
-    return render(request, "profile.html", {'form':form})
+    return render(request, "profile/profile.html", {'form':form})
