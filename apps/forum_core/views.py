@@ -8,6 +8,7 @@ from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 
 def forum(request):
+
     profile = Profile.objects.all()
     if request.method=="POST":
         user = request.user

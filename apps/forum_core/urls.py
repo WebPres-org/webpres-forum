@@ -10,7 +10,7 @@ import apps.forum_core.views
 
 
 urlpatterns = [
-    path("", views.forum, name="forum"),
+    path("forum", views.forum, name="forum"),
     path("", apps.forum_core.views.forum, name="forum"),
     path("discussion/<int:myid>/", views.discussion, name="Discussions"),
     path("register/", views.UserRegister, name="Register"),
