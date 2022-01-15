@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate,  login, logout
 from .models import Post, Replie, Profile
 from .forms import ProfileForm
+from django.core import mail
 from django.contrib.auth.decorators import login_required
 
 def forum(request):
@@ -118,3 +119,6 @@ def myprofile(request):
     else:
         form=ProfileForm()
     return render(request, "profile/profile.html", {'form':form})
+
+
+

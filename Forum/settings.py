@@ -3,6 +3,8 @@ from pathlib import Path
 import os
 import django_heroku
 import sys
+from django.core.mail import EmailMultiAlternatives
+
 sys.modules['fontawesome_free'] = __import__('fontawesome-free')
 
 
@@ -144,6 +146,7 @@ MEDIA_URL = '/media/'
 
 
 # Settings for django-bootstrap-v5
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 BOOTSTRAP5 = {
     "error_css_class": "bootstrap5-error",
     "required_css_class": "bootstrap5-required",
@@ -154,9 +157,27 @@ BOOTSTRAP5 = {
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
 
+###Bootrap
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+###eMail Congfig:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'rony807777@gmail.com'
+EMAIL_HOST_PASSWORD = 'Rony807777@gmail'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+EMAIL_FILE_PATH = '/' # change this to a proper location
 
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+
+FORMAT_MODULE_PATH = [
+    'apps.forum_core.formats',
+]
