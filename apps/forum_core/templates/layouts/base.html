@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 {% load static %}
 {% load bootstrap5 %}
 {% bootstrap_css %}
@@ -8,16 +9,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
     <!-- reference your installed Font Awesome Free package's files here -->
     <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
      <script src="{% static 'bootstrap_javascript_url' %}"></script>
 
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1930350912157340"
+     crossorigin="anonymous"></script>
+
     <!-- Our project just needs Font Awesome Free's Solid + Brand files -->
       <link href="{% static 'fontawesome_free/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
       <link href="{% static 'fontawesome_free/css/brands.css' %}" rel="stylesheet" type="text/css">
       <link href="{% static 'fontawesome_free/css/solid.css' %}" rel="stylesheet" type="text/css">
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block bootstrap5_title %}|{{ title }}{% endblock %}</title>
 
 
 
@@ -25,63 +30,99 @@
     {% block extra_css %}{% endblock %}
 
   </head>
-
-{% block head %}
-
-<nav class="navbar navbar-dark bg-dark"><!--main navbar-->
+{% block bootstrap5_content %}
+<header>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><!--main navbar-->
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img src="{% static 'Assets/brand/webpres-logo.png'%} " alt="" width="50" height="50" class="d-inline-block align-text-top">
+       <span class="position-absolute badge rounded-pill bg-danger">
+          V.1.0
+       </span>
     </a>
-
-      <li class="nav navbar-nav me-auto">
-
-        <li class="nav-item">
-        <a class="nav-link text-white" href="/">Forums</a>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+        <a class="nav-link text-white" href="/">Home</a>
       </li>
           <li class="nav-item">
         <a class="nav-link text-white" href="https://docs.webpres.org/">Docs</a>
       </li>
           <li class="nav-item">
-        <a class="nav-link text-white" href="https://www.webpres.org/">WebPres Site</a>
+        <a class="nav-link text-white" href="http://forum.webpres.org/">Forums</a>
+      </li>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="/post/">Blog</a>
       </li>
 
-        <ul class="nav justify-content-end">
+
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="https://github.com/WebPres-org/v1.0/"><i class="fab fa-github"></i>&nbsp;Fork</a>
+      </li>
+
+      </li>
+          <li class="nav-item">
+        <a class="nav-link text-white" href="https://buy.stripe.com/7sI3fY9TD5jE3KgdR0"><i class="fas fa-hand-holding-usd"></i>&nbsp;Donate</a>
+      </li>
+    </ul>
+
+        <ul class="nav justify-content">
   <li class="nav-item">
         {% if user.is_authenticated %}
-     <li class="nav-item dropdown">
+     <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href='#' id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Welcome {{request.user}}</a>
     <div class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-    <ul>
-        <ul><a class="dropdown-item" href="/myprofile">My Profile</a></ul>
-          <ul><a class="dropdown-item" href="/logout">Logout</a></ul>
+    <ul class="nav justify-content-start">
+        <ul><a class="dropdown-item " href="{% url 'Myprofile' %}">My Profile</a></ul>
+        <ul><a class="dropdown-item" href="{% url 'post_create' %}">Create Post</a></ul>
+          <ul><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></ul>
     </ul>
       </li>
 {% else %}
       <li class="nav-item">
-        <a class="nav-link text-white" href="/register/">Register</a>
+        <a class="nav-link text-white" href="{% url 'register' %}">Register</a>
       </li>
       <li class="nav-item">
-        <li class="nav-item">
-    <a class="nav-link text-white btn btn-outline-danger " href="/login">Login</a>
-  </li>
-      </li>
-      {% endif %}
+          <li class="nav-item">
+             <a class="nav-link text-white btn btn-outline-danger " href="{% url 'login' %}">Login</a>
+         </li>
+            </li>
+               {% endif %}
 
-  </li>
- </li>
+             </li>
+          </li>
     </ul>
-      </div>
-</nav>
+
+            </div>
+         </div>
+       </nav>
+    </header>
+ {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
 {% endblock %}
 
 <!--start Body-->
 <body>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <main class="container">
       {% block content %}{% endblock %}
 
 </main>
     {# --- js --- #}
     {% block extra_js %}{% endblock %}
+
 </body>
 </html>
+
