@@ -1,17 +1,10 @@
-{% extends "layouts/basic.html" %}
+{% extends 'basic.html' %}
 
 {% block title %} Solutions {% endblock %}
 
 {% block css %}
 {% endblock %}
-{% block body %}
-{% block head-meta %}
-  	<meta charset="utf-8">
-  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
-    <meta name="keywords" content="Forum WebPres , Discussion.">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% endblock %}
+{% block body %} 
 <br>
 <div class="container-fluid mt-5">
     <div class="row">
@@ -33,7 +26,7 @@
                 </div>
                 <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
 
-                    <div class="px-4 pt-3"> <button type="button" class="btn btn-primary" data-target="#reply" data-toggle="modal"><i
+                    <div class="px-4 pt-3"> <button type="button" class="btn btn-dark btn-sm" data-target="#reply" data-toggle="modal"><i
                                 class="ion ion-md-create"></i>&nbsp; Reply</button> </div>
                 </div>
             </div>
@@ -53,11 +46,11 @@
 </div>
 {% endfor %}
 <!-- Modal -->
-<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade" id="reply" tabindex="-1" role="dialog" aria-labelledby="PostModel1" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Start Post</h5>
+          <h5 class="modal-title" id="PostModel1">Create Your Reply Here</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -66,17 +59,17 @@
         <div class="modal-body">
           <form action="/discussion/{{post.id}}/" method="POST"> {% csrf_token %}
             <div class="form-group">
-              <label for="FormControlTextarea1">Post Your Solution Here</label>
+              <label for="Post1">Post Your Solution Here</label>
               <input type="hidden" name="post_id" value="{{post.id}}">
               <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
             </div>
           </div>
           {% else %}
-          <h3>Please Login first to post a reply</h3>
+          <h6>Please Login first to post a reply</h6>
           {% endif %}
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Post Solution</button>
+          <button type="submit" class="btn btn-dark btn-secondary">Post Solution</button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-{% extends "layouts/base.html" %}
+{% extends "basic.html" %}
 {% load static %}
 {% block head-meta %}
   	<meta charset="utf-8">
@@ -14,11 +14,47 @@
 <!--Donate-->
 <div class="container">
   <h2>Privacy Policy.</h2>
-<p>This Privacy is applied to ronyman.com and additional terms amd services will be applied base on each products or websites are managed by us. </p>
+<p>This Privacy is applied to ronyman.com and additional terms amd services will be applied base on WebPres's products or websites are managed by us. </p>
     <p>Your private information is more concerned from us to keep them secured and safe.We will use your information only for related work purposes</p>
 <p>We do not share your information to others Unless apps integrated. </p>
     <p>We suggested keep an eye to look in this privacy policy since it has been done and updated any time. </p>
-    <p> To learn more about <a href="/terms" class="text-reset">Terms of Used.</a></p>
+
+<h3>Data we collect</h3>
+<p>Following standard procedures of using log files, these files automatically log visits when you visit the Website, it may include information about your web browser, it may log some of the cookies that are installed on your device, IP address, ISP, time zone and time stamp, referring/exit pages, number of clicks. The purpose of this information is for analyzing trends, administering this website, tracking users' movement on this website, and gathering demographic information, and it's not linked to any information that is personally identifiable. Additionally, as you browse the Website, we may collect information about subpages you view.</p>
+
+<p>We may also collect personal information about you such as your name, organization/company name, address, email address or other personal data if you provide it to us during registration, purchasing, contacting us or in other ways. We only ask for personal information when we truly need it to provide a desired service to you (for example if you make an order through the Website). We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we're collecting it and how it will be used.</p>
+<h3>Sharing your Personal Information</h3>
+We don't share, sell, trade or rent any personally identifying information publicly or with third-parties, except when required to by law, if you violate our Terms of Use or where it helps us facilitate our Service. For example online store module may require third-party services like PayPal or other Payment Processors, we may also use stats services like Google Analytics, Facebook Pixel and more. Each of these services have their own Privacy Policy, for example:
+<p>PayPal<p>
+<p>Google Analytics</p>
+<p>In order to provide certain features we may rely on other third party services like payment and accounting providers or services, support or communication providers and other services, we reserve right to not track how you interact with any of the provided services.</p>
+
+<p>We may collect and use Non-Personal Information to help us improve the Service, customize your experience and analyze use of the Service. This Privacy Policy does not limit our use or disclosure of collected Non-Personal Information. We reserve the right to collect, use and disclose such Non-Personal Information to our partners, advertisers and other third parties at our sole discretion.</p>
+<h3>Cookies and Beacons</h3>
+<p>{{doamin_name}} uses "Cookies", which are small data files placed on your device only if your browser's settings allow it and may include information like unique ID, previously visited subpages on this Website and/or other information. Types of Cookies we may use: Session Cookies, Security Cookies or Preference Cookies. You can disable or erase cookies in your browser settings.</p>
+<h3>General Data Protection Regulation (GDPR)</h3>
+<p>The General Data Protection Regulation (GDPR) is a regulation in EU law on data protection and privacy for all individuals within the European Union and the European Economic Area.</p>
+
+<p>If you are a European resident, we are Data Controller of your data and you have the right to know how your personal information is processed, what we collected about you and to ask that this data to be corrected, updated, or deleted. Additionally, please note that your information may be transferred outside of Europe, including to Canada and the United States. Please contact us if you have any questions about your GDPR rights. For more information or complaints please contact your local data protection authority.</p>
+<h3>Data Retention</h3>
+<p>We retain collected information for as long as necessary to provide you with your requested service or unless and until you ask us to delete this information. Data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorised access, disclosure, copying, use or modification. Customer passwords which we may store are is stored as a hash and original password cannot be recovered.</p>
+<h3>Email Communication</h3>
+<p>We may communicate with you by email or telephone in response to your inquiries or send you service-related announcements based on Personal Information you provide to us. We may also use your Personal Information to send you updates and other promotional communications if we received your agreement. If you no longer wish to receive those email updates, you may opt-out at anytime of receiving them by following the instructions included in each communication. Usually it's an "unsubscribe" link.</p>
+<h3>Links To Other Websites</h3>
+<p>Our Website may contain links to and from third party websites or services that are not operated by us. If you follow a link to any of these websites and you will be redirected to third part website, please note that these websites have their own privacy policies and we do not accept any responsibility or liability for these policies or practices. Please review the Privacy Policy of every website you visit before you submit any Personal Information to any of these websites.<p>
+<h3>Advertisements</h3>
+<p>Our Website may display ads delivered to you by our advertising partners who may have their own Privacy Policy and may set cookies and web beacons. These cookies help ad server recognizing your device each time ad is delivered to you or other users of your device. This Privacy Policy covers the use of {{domain_name}} only and does not cover any third party advertisers or partners.
+Childrens
+This Website does not address any individuals under the age of 18. By using the Website, you represent that you are at least 18 years of age.
+Do Not Track
+This Website does not alter its data collection and use practices when your browser sends Do Not Track signal
+<h3>Business Transfers</h3>
+In the event {{doamin_name}}, or substantially all of our assets, were acquired, or in the unlikely event that  goes out of business or enters bankruptcy, your personal information would be one of the assets that is transferred or acquired by a third party which may continue to process your Personal Information. You acknowledge and consent that such transfers may occur, and are permitted by this Privacy Policy, and that any acquirer of our assets may continue to use your personal information as set forth in this policy.
+Changes
+We reserve the right to update or modify this Privacy Policy at anytime without prior notice. We will post these changes on this page so please review this document each time before you provide us with any personal information. This Policy is effective as of {{current_create_date}}. Your continued use of the Website after seven (7) days of any changes or revisions to this Privacy Policy shall indicate your agreement with the terms of such revised Privacy Policy. We suggest that you check this Privacy Policy periodically if you are concerned about how your information is used.
+Consent
+By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+    <p> To learn more about <a href="/terms/" class="text-reset">Terms of Used.</a></p>
 
  {% include "legal/copyrights.html" %}
 {% endblock %}

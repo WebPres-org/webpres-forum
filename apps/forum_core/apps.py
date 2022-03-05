@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
 
-class UserConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
+class ProfileOfUserConfig(AppConfig):
     name = 'apps.forum_core'

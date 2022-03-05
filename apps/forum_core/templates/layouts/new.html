@@ -1,45 +1,48 @@
 {% extends "layouts/base.html" %}
-{% include "header/script.html" %}
+{% load i18n %}
 {% load static %}
 {% load bootstrap5 %}
-% block head-meta %}
+
+{% block head-meta %}
   	<meta charset="utf-8">
   	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
-    <meta name="keywords" content="WebPres.org , Create A New Page.">
+    <meta name="keywords" content="Admin Login , Webpres Web Developer and Tax Services Agent in Australia.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% endblock %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create A New Page</title>
-</head>
+{% block title %}Create New App | WebPres.org{% endblock %}
+{% block extrahead %}
+         <link rel="shortcut icon" type="image/png" href="{% static 'Assets/brand/favicon.ico' %}"/>
+    {% endblock %}
 
-
-{{ blogentry.image }}
-<img src="{{ publication.image.url }}" />
-
-{% ifequal blogentry.image.image_orientation "landscape" %}
-    <img src="{{ blogentry.image.url }}" class="landscape" />
-{% endifequal %}
-<body>
-
-
-{% block title %}
-
-<textarea>
-    tinymce.init({
-  selector: 'textarea',  // change this value according to the HTML
-  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent'
-});
-    Welcome to TinyMCE!
-  </textarea>{% endblock %}
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'Assets/brand/webpres-logo.png' %}" height="50px" />
+    </a>
+</h1>
+{% endblock %}
+{% block nav-global %}{% endblock %}
 
 {% block content %}
+
+<h3>{{ message }}</h3>
     This is <em>an</em> Opensource WebPres  <strong>Free Site Builder</strong>.
+
+
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple hero unit, edit me and write your own text here.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-dark btn-sm" href="#" role="button">Customize Your App</a>
+  </p>
+</div>
+
+
+{% include "includes/footer/sponsored.html" %}
+{% include "legal/copyrights.html" %}
 {% endblock %}
-{% include "footer/copyrights.html" %}
-{% include "powered-by/webpres.html" %}
 </body>
 </html>

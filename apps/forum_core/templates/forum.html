@@ -1,0 +1,191 @@
+{% extends 'basic.html' %}
+
+{% block title %} Forum {% endblock %}
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block css %}
+body {
+margin: 0;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+font-size: .88rem;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+text-align: left;
+background-color: #eef1f3
+}
+
+.mt-100 {
+margin-top: 100px
+}
+
+.card {
+box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem
+0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+border-width: 0;
+transition: all .2s
+}
+
+.card-header:first-child {
+border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+}
+
+.card-header {
+display: flex;
+align-items: center;
+border-bottom-width: 1px;
+padding-top: 0;
+padding-bottom: 0;
+padding-right: .625rem;
+height: 3.5rem;
+text-transform: uppercase;
+background-color: #fff;
+border-bottom: 1px solid rgba(26, 54, 126, 0.125)
+}
+
+.btn-primary {
+color: #fff;
+background-color: #3f6ad8;
+border-color: #3f6ad8
+}
+
+.btn {
+font-size: 0.8rem;
+font-weight: 500;
+outline: none !important;
+position: relative;
+transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s
+}
+
+.card-body {
+flex: 1 1 auto;
+padding: 1.25rem
+}
+
+.card-body p {
+font-size: 13px
+}
+
+a {
+color: #E91E63;
+text-decoration: none !important;
+background-color: transparent
+}
+
+.media img {
+width: 40px;
+height: auto
+}
+{% endblock %}
+{% block body %}
+{% load static %}
+
+
+<br>
+<br>
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <h2>Best Topic</h2>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+    <br>
+        <h2>Best Solved</h2>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+        <h6>WebPres_core</h6>
+    </div>
+    {% for post in posts %}
+    <div class="col-5">
+        <h3>WebPres Community.<button class="btn btn-dark btn-sm" data-target="#questions" data-toggle="modal" role="button">Add Post</button></h3>
+              <div class="card mb-4">
+                  <div class="media flex-wrap w-100 align-items-center"> <img src="/media/{{post.image}}"
+                              class="d-block ui-w-40 rounded-circle" alt="">
+                          <div class="media-body ml-3"> <a href="/discussion/{{post.id}}" data-abc="true">{{post.user1}}</a>
+                          </div>
+                          <div class="text-muted small ml-3">
+                            <div class="px-4 pt-3">{{post.timestamp}} </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body bg-white">
+                      <p>{{post.post_content}}</p>
+                  </div>
+                  <div class="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
+                  </div>
+  {% endfor %}
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="questions" tabindex="-1" role="dialog" aria-labelledby="PostModel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="PostModel1">Create a Post Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="modal-body">
+          <form action="/" method="POST"> {% csrf_token %}
+          <div class="form-group">
+            <label for="Post1">Post Your Question Here</label>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+          </div>
+        </div>
+        {% else %}
+        <h6>Please Login to post</h6>
+        {% endif %}
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-outline btn-dark">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="col">
+         <div class="col">
+                <h2>Best Topic</h2>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+            <br>
+                <h2>Best Solved</h2>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+                <h6>WebPres_core</h6>
+            </div>
+         </div>
+    </div>
+    {% endblock %}
+    {% block js %}
+    <script>
+     {% if alert %}
+    alert('Your Question has been posted successfully!!');
+    document.location = '/';
+    {% endif %}
+    </script>
+
+
+{% include "includes/footer/sponsored_by.html" %}
+{% include "includes/footer/people_by.html" %}
+{% include "layouts/quick_links.html" %}
+{% include "legal/copyrights.html" %}
+{% endblock %}

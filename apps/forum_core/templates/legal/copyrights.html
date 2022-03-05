@@ -1,21 +1,35 @@
 {% block footer %}
-<div id="footer" style="">{% load static %}
-    <hr/>
-    <div class="container pull-center">
-    <div class="container">
-        <p class="text-muted text-left">&copy;
-           {% now 'Y' %} <a class="" href="https://www.ronyman.com/"> <img src="{% static 'Assets/uploads/ronyman-logo.png'%} " width="3%">ronyman.com</a></p>
-    </div>
+{% load static %}
+</br>
+</br>
+</br>
+</br>
 
+<style>
+    .footer {
+  background-image: linear-gradient(145deg,#0d1a26,gray, #0d1a26);
 
-    <div class=" text text-right" role="alert">
-    <a href="/privacy/" class="text-reset">Privacy Policy.</a>
-    <a href="/terms/" class="text-reset">Terms of Used.</a>
-        <a href="/contact/" class="text-reset">Contact Us.</a>
-  </div>
+}
+</style>
+<div id="footer">
+<hr class=" text-right text-warning">
+            <div id="footer" class="position-absolute" >
+                <div class="container">
+                <div class="container flex">
+                    <p class="text-muted text-left">&copy;
+                        {% now 'Y' %} WebPres.org
+                        Powered by: <a href="https://www.ronyman.com/" class="text-decoration-none text-warning"> <img src="{% static 'Assets/uploads/ronyman-logo.png'%} " width="3%"> ronyman.com</a></p>
 
+                        <div class=" text text-right" role="alert">
+                                <a href="/privacy/" class="text-decoration-none text-muted">Privacy Policy.|</a>
+                                <a href="/terms/" class="text-decoration-none text-muted" >Terms of Used.|</a>
+                                <a href="/contact/" class="text-decoration-none text-muted">Contact Us.</a>
 
+                         </div>
+            </div>
+         </div>
 
-</div>
+        </div>
+
 {% endblock %}
 

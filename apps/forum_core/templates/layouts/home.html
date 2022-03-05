@@ -1,4 +1,5 @@
 {% extends "layouts/base.html" %}
+{% load i18n %}
 {% load static %}
 {% load bootstrap5 %}
 {% block head-meta %}
@@ -7,34 +8,144 @@
     <meta name="keywords" content="WebPres.org , Opensource CMS Site builder.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Facebook -->
+    <meta property="og:url"                content="https://www.webpres.org/" />
+    <meta property="og:type"               content="home" />
+    <meta property="og:title"              content="Hello World WebPres" />
+    <meta property="og:description"        content="WebPres is a Lightweight website builder ever. WebPres is build in Python is the most popular programming language in the world" />
+    <meta property="og:image"              content="https://scontent.fmel14-1.fna.fbcdn.net/v/t39.30808-6/271831274_106187468626862_4528830638432417584_n.png?_nc_cat=110&ccb=1-5&_nc_sid=730e14&_nc_ohc=krUprzrgUFEAX-KCKWn&_nc_ht=scontent.fmel14-1.fna&oh=00_AT-ztPkwek43N1ADmkFoxMXZUIKx9ogEv0RTYjbgVb4-pw&oe=61E6277D" />
+
+<link href="{% static 'extra_css/homepage.css' %}" rel="stylesheet" type="text/css">
     {% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to Webpres site</title>
+    <title>WebpPres.org</title>
+     {% block bootstrap5_title %} Hello World | WebPres.org{% endblock %}
 </head>
 <body>
-{% block title %}Hello World{% endblock %}
 
 {% block content %}
+<style>
+    .homepage  {
+  background-image: url("https://webpres.s3.ap-southeast-1.amazonaws.com/static/images/WebPres_background2.png?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0yIkcwRQIgcoxSXhTe%2FlYu6UFUcl1FPm0bvp8Rth3c3wNt5XI8VcUCIQCEnPWxcoWI%2FtHgSrQ5DjPQo2NAVr88O%2Fv4%2FIS2r1dTWCrkAggVEAAaDDQ4MzE4NzMyMDc2OCIMwNmECzN%2BG%2FBB7GltKsECGigr04%2BWKoQl%2F0QLcSxEsE49iv%2Fs6lkdeCsdsnhxblo7kAJNvhCx0tFX3Wr9PNne%2BgpsNyTyJjOZ8nhxj5yyJFf9WRd35i%2Bo1CS0qHRocokJRDidLhD0cESMeF62%2Fy3sPiNS%2FAI1rAv9bhlZaTwmgwSmeElEzKMONjrwE5rQuWjOJnzqjbrML%2F3TU5lIYE9IyxRGmZTe9XM2Q8qRp9CfWcAcJOgryA5U0DJ0NcGR3r2oIrkfvqH5zgInLT%2B59jJxfu2wxUNMdoFtQcwix22o%2FsVSTo9nYBTopXVtT10uT0CnG%2Bpmxx8qHpEv79csAcUd1f14btTNSgM3d9XGpQFvAHkA3%2FKre1TEyzsLtyNSdj9ehrOAzXMMjzKo1eGW7CfMmmKzcs8JACBUUeWkgnokWzzdzphrKwgPPA%2Fkf5exaWN7MImzw5AGOrMCc0idxfTvoX171SQskljakoZuchgV1tl6GN1QhZXgn2yLqTRPn8yGAHbGszEhn9Qct7n7XxJQ%2F6qTaqxj%2FSPTfT%2BlOuvQrdVFYUFnSySlCyV%2BIgrcZy9q4O5OBtyowtkKGdHod3J3K6oWjVezAt5uDV07DYEh%2BZk7kcocv7VVX2trIiJ%2FKRYVcbRJlEjaXK6d5eV5nb0fivSi%2B9C3VJs082053kSn4FJeFQxvy2o56HmlBrGq6OjrU%2F4brjnVLUoHbeQTxmijt7st6qCvF6Dcg3%2F%2FXrj1RiMJCoNUB7oAdMoBzqPv0Td0O0JXhCqr3UqFWouO%2B7ohYsqVaMbYi%2FPOE43Cp%2BhYvJztFxo85BfH9ai38hFYEbqj5StF%2B%2F2MpH%2B3V6AAWuS8%2Bjztt3bH%2Bej2Uzk63g%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220219T122537Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAXBABVM7AJFED5YLR%2F20220219%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=48573e422ade21f0500e33f6a5500a79a8eebf0b87f5f1763afc098117b2d683");
+  background-repeat: repeat-no;
+  }
 
-<button type="button" class="btn btn-secondary position-relative">
-  Opensource
-  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-   %100
-    <span class="visually-hidden">Free</span>
-  </span>
-</button>
+</style>
 
+<div class="homepage">
+<main>
+    <h1>Get started with WebPres</h1>
+    <p class="fs-5 col-md-8">WebPres is Bootstrap's compiled,Create New Page in a second from your blog post.</p>
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <h1>CMS Site Builder</h1>
-    <p class="" style="color:red">Recommended Hosting Services.
-    <a type="button" class="btn btn-lg btn-default" href="https://bigwebx.com/"><span class="glyphicon glyphicon-ok"></span>[Bigweb X]</a></p>
-  </div>
+    <div class="mb-5">
+      <a href="https://bigwebx.com/webpres.php" class="btn btn-info btn-sm px-4">Buy Stable WebPres</a>
+    </div>
+
+    <hr class="col-3 col-md-2 mb-5">
+
+    <div class="row g-5">
+      <div class="col-md-6">
+        <h2>How to get Started?</h2>
+        <p>Head up to the Docs Menu above.</p>
+        <p>Before you can use WebPres, you’ll need to install it. Our complete installation guide covers all the possibilities; this guide will get you to a simple, minimal installation that’ll work while you walk through the introduction.</p>
+        <ul class="icon-list">
+          <li><a href="https://docs.webpres.org/" rel="noopener" target="_blank">Documentation</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h2>Bootstrap Guides</h2>
+        <p>Read more detailed instructions and documentation on using or contributing to Bootstrap.</p>
+        <ul class="icon-list">
+          <li><a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">Bootstrap quick start guide</a></li>
+          <li><a href="https://getbootstrap.com/docs/5.1/getting-started/webpack/">Bootstrap Webpack guide</a></li>
+          <li><a href="https://getbootstrap.com/docs/5.1/getting-started/parcel/">Bootstrap Parcel guide</a></li>
+          <li><a href="https://getbootstrap.com/docs/5.1/getting-started/contribute/">Contributing to Bootstrap</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
 </div>
+
+<!----Featured-->
+<div class="container px-4 py-5" id="icon-grid">
+    <h2 class="pb-2 border-bottom">Featured</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Bootrapv5</h4>
+          <p>WebPres v.1.0.is built with Bootrapv5.0</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#cpu-fill"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Languages</h4>
+          <p>Python.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#calendar3"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Backend</h4>
+          <p>DB Migrations.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#home"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Hosting</h4>
+          <p>Possibly Host on your own or by WebPres's App.</p>
+        </div>
+      </div>
+
+
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#speedometer2"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Domain</h4>
+          <p>Custom Domain.</p>
+            <p>Domain Wildcard</p>
+
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#toggles2"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">SSL</h4>
+          <p>Secured your site by SSL protection.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#geo-fill"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Browser</h4>
+          <p>WebPres works for all browsers.</p>
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#tools"/></svg>
+        <div>
+          <h4 class="fw-bold mb-0">Documentation</h4>
+          <p>Available on WebPres's homepage links.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+</div>
+
+
 <div class="container">
     <div class="alert alert-info text-center" role="alert">
     To deploy your own copy, and learn the how to deploy and host site on your own server, head over to the <a href="https://github.com/WebPres-org/v1.0" class="alert-link">Get Started</a>
@@ -44,21 +155,24 @@
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-info-sign"></span>fork or Download WebPres</h3>
       <ul>
-        <li>Fork & Vote a start at <a href="https://github.com/WebPres-org/v1.0">Github</a> Webpres V1.0.</li>
+        <li>Fork & Vote a star at <a href="https://github.com/ronyman-com/WebPres/releases/tag/WebPres">Github</a> WebPres</li>
 
         <li>How to <a href="">get started</a></li>
         <li>Host your site with us. Free consultancy</li>
         <li>Manage Server on your own <a href="https://bigwebx.com/index.php?rp=/store/deploy-modern-app">Check out.</a></li>
       </ul>
     </div>
+
+
+
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-link"></span> Install WebPres on Your Own Server</h3>
       <ul>
-        <li>If you are following the <a href="https://github.com/WebPres-org/v1.0"  <li class="nav-item">
+        <li>If you are following the <a href="https://github.com/ronyman-com/WebPres/releases/tag/WebPres"  <li class="nav-item">
 Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
         <li>Deploy your app by stackscript: or clone from </li>
         <ul>
-          <li><code>https://github.com/WebPres-org/v1.0.git</code> - this will create a local copy of the source code for the app</li>
+          <li><code>https://github.com/ronyman-com/WebPres.git</code> - this will create a local copy of the source code for the app</li>
           <li><code>cd WebPres</code> - change directory into the local source code repository</li>
           <li>No server yet? <a href="https://bigwebx.com/index.php?rp=/store/deploy-modern-app">Check out</a> price on Bigwebx</li>
         </ul>
@@ -66,16 +180,21 @@ Getting Started</a> guide, then please head back to the tutorial and follow the 
       <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
       <ul>
         <li><a href="">Developer Team</a></li>
-        <li><a href="https://www.forum.webpres.org">WebPres Forum</a></li>
-        <li><a href="www.webpres.org">Download Cms WebPres Site Builder</a></li>
+        <li><a href="http://forum.webpres.org/">WebPres Forum</a></li>
+        <li><a href="http://www.webpres.org/">Download Cms WebPres Site Builder</a></li>
         <li><a href="https://docs.webpres.org/en/latest/">WebPres Documentations</a></li>
       </ul>
     </div>
   </div> <!-- row -->
-
+<h3>{{ copyrights }}</h3>
 </div>
-{% include "includes/footer/sponsored.html" %}
+
+{% include "includes/footer/sponsored_by.html" %}
+{% include "includes/footer/people_by.html" %}
+{% include "layouts/quick_links.html" %}
 {% include "legal/copyrights.html" %}
 {% endblock %}
 </body>
 </html>
+
+
