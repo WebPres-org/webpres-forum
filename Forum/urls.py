@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from apps.forum_core import views as user_views
+from django.shortcuts import render
 
 #from .forms import UserRegisterForm, UserUpdateForm, EditProfileForm, ProfileForm
 #from .models import Profile, UpdateProfileForm

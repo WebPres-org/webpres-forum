@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 
 
+
 def forum(request):
     profile = Profile.objects.all()
     if request.method=="POST":   
@@ -36,7 +37,7 @@ def discussion(request, myid):
         return render(request, "discussion.html", {'alert':alert})
     return render(request, "discussion.html", {'post':post, 'replies':replies})
 
-def UserRegister(request):
+def register(request):
     if request.method=="POST":   
         username = request.POST['username']
         email = request.POST['email']
@@ -62,7 +63,7 @@ def UserRegister(request):
         return render(request, 'login.html')        
     return render(request, "register.html")
 
-def UserLogin(request):
+def login(request):
     if request.method=="POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -79,10 +80,6 @@ def UserLogin(request):
         return render(request, 'login.html', {'alert':alert})            
     return render(request, "login.html")
 
-def UserLogout(request):
-    logout(request)
-    messages.success(request, "Successfully logged out")
-    return redirect('/login')
 
 @login_required(login_url = '/login')
 def myprofile(request):
