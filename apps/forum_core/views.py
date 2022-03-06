@@ -7,10 +7,8 @@ from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, EditProfileForm, ProfileForm
 from .models import Profile, UpdateProfileForm
-
-
-
-
+from django.utils.text import slugify
+from django.urls import reverse_lazy
 
 
 def forum(request):
@@ -18,8 +16,9 @@ def forum(request):
     if request.method=="POST":   
         user = request.user
         image = request.user.profile.image
+        title = request.POST.get('title')
         content = request.POST.get('content','')
-        post = Post(user1=user, post_content=content, image=image)
+        post = Post(user1=user, post_title=title, post_content=content, image=image)
         post.save()
         alert = True
         return render(request, "forum.html", {'alert':alert})
@@ -52,6 +51,33 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'registration/register.html', {'form': form})
+
+def search(request):
+   template = 'search_list.html'
+   query = request.GET.get('q')
+   if query:
+      posts = Post.objects.filter(Q(title__icontains=query) | Q(body__icontains=query)).order_by('-post_date')
+   else:
+      posts = Post.objects.all()
+
+   cat_list = Categories.objects.all()
+   latestpost_list = Post.objects.all().order_by('-post_date')[:30]
+   paginator = Paginator(posts, 50)
+   page = request.GET.get('page')
+   posts = paginator.get_page(page)
+   return render(request, template, {'posts':posts, 'cat_list': cat_list, 'latestpost_list':latestpost_list, 'query':query})
+
+def CategoryView(request, cats):
+   if Categories.objects.filter(categoryname=cats).exists():
+      category_posts = Post.objects.filter(category__categoryname=cats).order_by('-post_date')
+      cat_list = Categories.objects.all()
+      latestpost_list = Post.objects.all().order_by('-post_date')[:30]
+      paginator = Paginator(category_posts, 10)
+      page = request.GET.get('page')
+      category_posts = paginator.get_page(page)
+      return render(request, 'category_list.html', {'cats':cats, 'category_posts':category_posts, 'cat_list': cat_list, 'latestpost_list':latestpost_list})
+   else:
+      raise Http404
 
 
 @login_required(login_url = '/login')

@@ -5,20 +5,36 @@ from django import  forms
 from django.contrib.auth.models import User
 from PIL import Image
 from django.utils.timezone import now
+from django.db.models.base import Model
+#from django.db.models.signals import pre_save
+#from apps.forum_core.utils import unique_slug_generator
+from tinymce.models import HTMLField
 
 
-# Create your models here.
-class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)    
-    image = models.ImageField(upload_to="images",default="default/user.png")
+# Create your models here.2
+#class Profile(models.Model):
+    #user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    #image = models.ImageField(upload_to="images",default="default/user.png")
     
     
 class Post(models.Model):
     user1 = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     post_id = models.AutoField
-    post_content = models.CharField(max_length=5000)
+    post_title = models.CharField(max_length=255, default='Post Question')
+    slug = models.SlugField(max_length=255, null=True, blank=True)
+    #author = models.ForeignKey(User, on_delete=models.CASCADE)
+    #post_content = models.CharField(max_length=5000)
+    post_content = HTMLField('Content')
     timestamp= models.DateTimeField(default=now)
     image = models.ImageField(upload_to="images",default="")
+    #category = models.ForeignKey(Categories, null=True, on_delete=models.PROTECT, related_name='category_set')
+
+class Categories(models.Model):
+    categoryname = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.categoryname
+
     
 class Replie(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -31,9 +47,7 @@ class Replie(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="uploads",default="default/user.png")
-
-
+    image = models.ImageField(upload_to="media/uploads",default="default/user.png")
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -43,8 +57,8 @@ class Profile(models.Model):
         img = Image.open(self.image.path) # Open image
 
         # resize image
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
+        if img.height > 100 or img.width > 100:
+            output_size = (100, 100)
             img.thumbnail(output_size) # Resize image
             img.save(self.image.path) # Save it again and override the larger image
 

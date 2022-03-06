@@ -12,6 +12,7 @@ sys.modules['fontawesome_free'] = __import__('fontawesome-free')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Include BOOTSTRAP5_FOLDER in path
 BOOTSTRAP5_FOLDER = os.path.abspath(os.path.join(BASE_DIR, "..", "bootstrap5"))
 if BOOTSTRAP5_FOLDER not in sys.path:
