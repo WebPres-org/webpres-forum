@@ -170,7 +170,7 @@ LOGGING = {
 }
 
 # Settings for django-bootstrap-v5
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 BOOTSTRAP5 = {
     "error_css_class": "bootstrap5-error",
     "required_css_class": "bootstrap5-required",
