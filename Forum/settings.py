@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'filebrowser',
     'fontawesome_free',
+    'storages',
 
 ]
 
@@ -182,3 +183,65 @@ django_heroku.settings(locals())
 FORMAT_MODULE_PATH = [
     'apps.forum_core.formats',
 ]
+
+
+
+######
+AWS_ACCESS_KEY_ID = os.environ.get('AKIAXBABVM7AK5AY24HW')
+AWS_SECRET_ACCESS_KEY = os.environ.get('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')
+AWS_STORAGE_BUCKET_NAME = 'webpres'
+
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+STATICFILES_STORAGE = 'apps.forum_core.storage.MediaStorage'
+DEFAULT_FILE_STORAGE = 'apps.forum_core.storage.MediaStorage'
+
+STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+######
+
+# To set static for admin
+#ADMIN_MEDIA_PREFIX = '/static/admin/'
+#To allow django-admin collectstatic to automatically bellow:
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+
+
+######
+TINYMCE_JS_URL = os.path.join(STATIC_URL, "path/to/tiny_mce/tiny_mce.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "path/to/tiny_mce")
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 1120,
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'modern',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists  charmap print  hr
+            anchor pagebreak
+            ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample |
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor |  code |
+            ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+    }
+#####

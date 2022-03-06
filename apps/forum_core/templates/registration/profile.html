@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %}
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+<html lang="en">
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="WebPres UserProfile , Profile.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block bootstrap5_title %} Profile | WebPres.org{% endblock %}
+    {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="card col-lg-6 offset-lg-3 mb-3">
+      <div class="row">
+        {% if user.profile.image %}
+        <img class="card-img-top col-sm-3 col-4 my-3" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
+        {% else %}
+        <img class="card-img-top col-sm-3 col-4 my-3" src="{% static '/default/user.png' %}" alt="{{ user.username }}">
+        {% endif %}
+        <div class="card-body col-9">
+          <h2 class="card-title my-3">{{ user.username }}</h2>
+          <p>Last login on: {{ user.last_login }}</p>
+          <p><a href="{% url 'edit_profile' %}">Edit your profile</a></p>
+          <p><a href="{% url 'password_change' %}">Change password</a></p>
+           <p class="card-text">{{ user.profile.about_me }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "legal/copyrights.html" %}
+{% endblock %}

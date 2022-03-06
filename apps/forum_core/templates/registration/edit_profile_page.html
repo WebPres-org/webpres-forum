@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+<html lang="en">
+{% block head-meta %}
+  	<meta charset="utf-8">
+  	<!--Add keywords that describe your project between the quotation marks. This helps search engines find and index your content-->
+    <meta name="keywords" content="WebPres UserProfile , Edit Profile Page.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+{% block content %}
+{% bootstrap_form form %}
+<div>
+    <h3>Edit Profile</h3>
+    <div class="form-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success">Create Profile Page</button>
+        </form>
+    </div>
+
+
+{% include "legal/copyrights.html" %}
+{% endblock %}
