@@ -83,3 +83,7 @@ def privacy(request):
 def terms(request):
     # return HttpResponse('Hello from Python!')
     return render(request, "legal/terms.html")
+
+def password_reset(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, "registration/password_reset.html")

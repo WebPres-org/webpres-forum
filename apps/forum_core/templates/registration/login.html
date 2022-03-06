@@ -18,7 +18,8 @@
 
 {% block bootstrap5_content %}
 
-
+<br>
+<br>
 <div class="p-3 mb-2 bg-dark text-white " style=" width: 400px;
   margin: auto;">
     <div class="text text-center" style="
@@ -43,7 +44,7 @@
   {% endbuttons %}
 </form>
     <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
-  <p class="text-center">Don't have an account? <a href="/register/">Create an account</a>.</p>
+  <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
 </div>
 
 </div>
