@@ -14,9 +14,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% endblock %}
- {% block bootstrap5_title %} Login | WebPres.org{% endblock %}
+ {% block bootstrap5_title %} Login | Forums WebPres{% endblock %}
 
-{% block content %}
+{% block bootstrap5_content %}
 
 
 <div class="p-3 mb-2 bg-dark text-white " style=" width: 400px;
@@ -48,6 +48,26 @@
 
 </div>
 </div>
-
+{% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
 {% include "legal/copyrights.html" %}
 {% endblock %}
+
+
+<!--start Body-->
+<body>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<main class="container">
+      {% block content %}{% endblock %}
+
+</main>
+    {# --- js --- #}
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>
